@@ -73,15 +73,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        mBitmap1.createBitmap(mRunway1.getHeight(),mRunway1.getWidth(), Bitmap.Config.ARGB_8888);
-//        mBitmapDrawable1 = new BitmapDrawable(mBitmap1);
+        mBitmap1.createBitmap(mRunway1.getHeight(),mRunway1.getWidth(), Bitmap.Config.ARGB_8888);
+        mBitmapDrawable1 = new BitmapDrawable(mBitmap1);
 
         mRunwayBar = (LinearLayout) findViewById(R.id.runway_bar);
         mRunwayBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Asteroid clicked", Toast.LENGTH_SHORT).show();
-//                mRunway1.setBackground(mBitmapDrawable1);
+                mRunway1.setOnClickListenerBackground(mBitmapDrawable1);
             }
         });
 
