@@ -2,9 +2,12 @@ package com.example.hornsby.spacegame;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout mRunway3;
     private RelativeLayout mRunway4;
     private RelativeLayout mRunway5;
+    private RelativeLayout.LayoutParams mParams;
 
     private BitmapDrawable mBitmapDrawable1;
     private Bitmap mBitmap1;
+    private Canvas mCanvas1;
+
 
 
     @Override
@@ -47,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mShip = new Ship();
-
-        mAsteroid = (ImageView) findViewById(R.id.asteroid);
 
         mSpot1 = (ImageView) findViewById(R.id.spot_1);
         mSpot2 = (ImageView) findViewById(R.id.spot_2);
@@ -73,15 +77,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mBitmap1.createBitmap(mRunway1.getHeight(),mRunway1.getWidth(), Bitmap.Config.ARGB_8888);
-        mBitmapDrawable1 = new BitmapDrawable(mBitmap1);
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.runway_1);
+
+        ImageView iv = new ImageView(this);
+
 
         mRunwayBar = (LinearLayout) findViewById(R.id.runway_bar);
         mRunwayBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Asteroid clicked", Toast.LENGTH_SHORT).show();
-                mRunway1.setOnClickListenerBackground(mBitmapDrawable1);
+                mParams.topMargin+=100;
             }
         });
 
